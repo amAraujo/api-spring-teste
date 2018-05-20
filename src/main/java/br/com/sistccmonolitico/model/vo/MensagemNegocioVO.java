@@ -2,7 +2,7 @@ package br.com.sistccmonolitico.model.vo;
 
 import java.io.Serializable;
 
-import br.com.sistccmonolitico.enuns.MensagemEnum;
+import br.com.sistccmonolitico.enums.MensagemEnum;
 import br.com.sistccmonolitico.utils.ResourceMensagem;
 
 public class MensagemNegocioVO implements Serializable{

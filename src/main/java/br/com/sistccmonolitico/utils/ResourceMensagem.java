@@ -3,7 +3,7 @@ package br.com.sistccmonolitico.utils;
 import java.text.MessageFormat;
 import java.util.ResourceBundle;
 
-import br.com.sistccmonolitico.enuns.MensagemEnum;
+import br.com.sistccmonolitico.enums.MensagemEnum;
 
 public class ResourceMensagem {
 	

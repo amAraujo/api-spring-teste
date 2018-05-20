@@ -1,6 +1,6 @@
 package br.com.sistccmonolitico.exception;
 
-import br.com.sistccmonolitico.enuns.MensagemEnum;
+import br.com.sistccmonolitico.enums.MensagemEnum;
 import br.com.sistccmonolitico.model.vo.MensagemNegocioVO;
 
 public class NegocioException extends RuntimeException{
