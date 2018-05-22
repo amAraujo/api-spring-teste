@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestOperations;
+import org.springframework.web.client.RestTemplate;
 
 import br.com.sistccmonolitico.enums.MensagemEnum;
 import br.com.sistccmonolitico.exception.NegocioException;
@@ -18,11 +19,12 @@ public class VendaServiceImpl implements VendaService {
 	@Autowired
 	private VendaRepository repository;
 	
-	@Autowired
-	private RestOperations restTemplate;
+//	@Autowired
+//	private RestTemplate restTemplate;
 	
 	@Override
 	public Venda salvar(Venda venda) {
+		RestTemplate restTemplate = new RestTemplate();
 		Usuario usuario = restTemplate.getForObject("http://localhost:8080/tcc/microservico/usuario?id=\"+venda.getIdUsuario()", Usuario.class);
 		if (usuario == null) {
 			throw new NegocioException(MensagemEnum.USUARIO_NAO_CADASTRADO);
