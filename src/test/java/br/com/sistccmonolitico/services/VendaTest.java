@@ -13,7 +13,6 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.web.client.RestTemplate;
 
 import br.com.sistccmonolitico.model.Produto;
 import br.com.sistccmonolitico.model.Usuario;
@@ -50,9 +49,6 @@ public class VendaTest {
 	
 	private Usuario usuarioMock;
 	
-	@Mock
-	RestTemplate restTemplate;
-	
 	@Before
 	public void initializeMockito() {
 		MockitoAnnotations.initMocks(this);
@@ -77,18 +73,14 @@ public class VendaTest {
 		
 	}
 	
-	@SuppressWarnings("unchecked")
 	@Test(expected = RuntimeException.class)
 	public void cadastrarVendaNull() {
-		Mockito.when(restTemplate.getForObject(Mockito.anyString(), Mockito.any(Class.class))).thenReturn(usuarioMock);
 		Mockito.when(repositoryMock.save(Mockito.any(Venda.class))).thenReturn(vendaMock);
 		vendaServiceImpl.salvar(null);
 	}
 
-	@SuppressWarnings("unchecked")
 	@Test
 	public void realizarVenda() {
-		Mockito.when(restTemplate.getForObject(Mockito.anyString(), Mockito.any(Class.class))).thenReturn(usuarioMock);
 		Mockito.when(repositoryMock.save(Mockito.any(Venda.class))).thenReturn(vendaMock);
 		Assert.assertEquals(vendaServiceImpl.salvar(vendaMock), vendaMock);
 		
@@ -100,5 +92,4 @@ public class VendaTest {
 		Assert.assertEquals(vendaServiceImpl.listar(), listVendaMock);
 		
 	}
-	
 }

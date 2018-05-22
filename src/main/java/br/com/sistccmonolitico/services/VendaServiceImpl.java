@@ -4,12 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestOperations;
-import org.springframework.web.client.RestTemplate;
 
 import br.com.sistccmonolitico.enums.MensagemEnum;
 import br.com.sistccmonolitico.exception.NegocioException;
-import br.com.sistccmonolitico.model.Usuario;
 import br.com.sistccmonolitico.model.Venda;
 import br.com.sistccmonolitico.repositories.VendaRepository;
 
@@ -19,23 +16,20 @@ public class VendaServiceImpl implements VendaService {
 	@Autowired
 	private VendaRepository repository;
 	
-//	@Autowired
-//	private RestTemplate restTemplate;
-	
 	@Override
 	public Venda salvar(Venda venda) {
-		RestTemplate restTemplate = new RestTemplate();
-		Usuario usuario = restTemplate.getForObject("http://localhost:8080/tcc/microservico/usuario?id=\"+venda.getIdUsuario()", Usuario.class);
-		if (usuario == null) {
-			throw new NegocioException(MensagemEnum.USUARIO_NAO_CADASTRADO);
-		
-		}
+		validarVenda(venda);
+		return repository.save(venda);
+
+	}
+
+	private void validarVenda(Venda venda) {
 		if(venda.getProdutos().isEmpty()) {
 			throw new NegocioException(MensagemEnum.NENHUM_PRODUTO_ADICIONADO);
 		}
-		
-		return repository.save(venda);
-
+		if("".equalsIgnoreCase(venda.getIdUsuario()) || venda.getIdUsuario() == null) {
+			throw new NegocioException(MensagemEnum.USUARIO_NULO_VAZIO);
+		}
 	}
 
 	@Override

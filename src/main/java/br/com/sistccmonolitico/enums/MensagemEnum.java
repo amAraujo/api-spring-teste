@@ -1,7 +1,7 @@
 package br.com.sistccmonolitico.enums;
 
 public enum MensagemEnum {
-	USUARIO_NAO_CADASTRADO("0000","usuario.nao.cadastrado"),
+	USUARIO_NULO_VAZIO("0000","usuario.nulo.vazio"),
     NENHUM_PRODUTO_ADICIONADO("0001", "nenhum.produto.adicionado");
     
 	
