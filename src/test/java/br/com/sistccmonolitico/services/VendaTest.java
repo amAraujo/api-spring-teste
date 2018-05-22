@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,9 +20,7 @@ import br.com.sistccmonolitico.model.Usuario;
 import br.com.sistccmonolitico.model.Venda;
 import br.com.sistccmonolitico.repositories.UsuarioRepository;
 import br.com.sistccmonolitico.repositories.VendaRepository;
-import junit.framework.Assert;
 
-@SuppressWarnings("deprecation")
 @MockBean
 @RunWith(MockitoJUnitRunner.class)
 public class VendaTest {
@@ -48,7 +47,7 @@ public class VendaTest {
 	
 	@InjectMocks
 	private VendaServiceImpl vendaServiceImpl;
-
+	
 	private Venda vendaMock;
 	
 	private List<Venda> listVendaMock;

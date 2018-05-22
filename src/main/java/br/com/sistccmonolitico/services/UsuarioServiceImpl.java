@@ -1,6 +1,7 @@
 package br.com.sistccmonolitico.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,8 +28,8 @@ public class UsuarioServiceImpl implements UsuarioService {
 	}
 
 	@Override
-	public Usuario consultarPorId(String id) {
-		return repository.findById(id).get();
+	public Optional<Usuario> consultarPorId(String id) {
+		return repository.findById(id);
 		
 	}
 }

@@ -1,6 +1,7 @@
 package br.com.sistccmonolitico.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import br.com.sistccmonolitico.model.Usuario;
 
@@ -10,6 +11,6 @@ public interface UsuarioService {
 	
 	List<Usuario> listar();
 	
-	Usuario consultarPorId(String id);
+	Optional<Usuario> consultarPorId(String id);
 	
 }
