@@ -73,6 +73,6 @@ public class UsuarioTest {
 	@Test
 	public void consultarPorId() {
 		when(repositoryMock.findById(Mockito.anyString())).thenReturn(optionalUsuarioMock);
-		Assert.assertEquals(serviceMock.consultarPorId(usuarioMock.getId()), optionalUsuarioMock.get());
+		Assert.assertEquals(serviceMock.consultarPorId(usuarioMock.getId()), optionalUsuarioMock);
 	}
 }
